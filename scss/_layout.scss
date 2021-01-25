@@ -17,3 +17,43 @@
     @include centeringText(50%);
   }
 }
+
+.about-us {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+
+  &-left {
+    position: relative;
+    width: 40%;
+    left: -150px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &-right {
+    width: 60%;
+    padding: 0 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .stars {
+      color: $color-primary;
+      margin: 20px 0;
+
+      .star {
+        margin-right: 10px;
+      }
+    }
+
+    p {
+      text-align: justify;
+      color: $color-secondary;
+      font-family: $font-josefinSans;
+    }
+  }
+}
