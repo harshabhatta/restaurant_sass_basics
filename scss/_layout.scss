@@ -1,3 +1,138 @@
+.navbar {
+  position: relative;
+  z-index: 200;
+
+  .navbar-nav {
+    display: flex;
+
+    &-left {
+      display: flex;
+      width: 50vw;
+      height: 100vh;
+      flex-direction: column;
+      position: fixed;
+      left: -50vw;
+      transition: left 0.7s;
+      background-color: lighten($color-black, 10%);
+
+      @media (max-width: 480px) {
+        display: none;
+      }
+
+      img {
+        width: 50%;
+        position: absolute;
+        @media (max-width: 1024px) {
+          width: 60%;
+        }
+        @media (max-width: 768px) {
+          width: 80%;
+        }
+      }
+
+      .navbar-img-1 {
+        top: 15%;
+        left: 10%;
+        @media (max-width: 1024px) {
+          top: 25%;
+        }
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .navbar-img-2 {
+        top: 35%;
+        left: 25%;
+
+        @media (max-width: 1024px) {
+          top: 40%;
+          left: 20%;
+        }
+        @media (max-width: 768px) {
+          top: 35%;
+          left: 10%;
+        }
+      }
+
+      .navbar-img-3 {
+        top: 55%;
+        left: 35%;
+
+        @media (max-width: 1024px) {
+          left: 30%;
+        }
+        @media (max-width: 768px) {
+          top: 50%;
+          left: 15%;
+        }
+      }
+    }
+
+    &-right {
+      @include flexLayout;
+      width: 50vw;
+      height: 100vh;
+      background-color: #1f1d1d;
+      position: fixed;
+      right: -50vw;
+      transition: right 0.7s;
+
+      @media (max-width: 480px) {
+        width: 100vw;
+        right: -100vw;
+      }
+
+      &-list {
+        list-style: none;
+
+        &-item {
+          font-family: $font-dancingScript;
+          font-size: 30px;
+          margin-bottom: 10px;
+
+          &-link {
+            display: block;
+            text-decoration: none;
+            @include textStyles(capitalize);
+            color: $color-secondary;
+            transition: all 0.5s;
+
+            &:hover {
+              color: $color-primary;
+              letter-spacing: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.navbar-checkbox:checked ~ .navbar-nav .navbar-nav-left {
+  left: 0;
+}
+
+.navbar-checkbox:checked ~ .navbar-nav .navbar-nav-right {
+  right: 0;
+}
+
+.navbar-checkbox:checked ~ .hamburger-menu {
+  transform: rotateZ(90deg);
+}
+
+.navbar-checkbox:checked ~ .hamburger-menu .menu-line-1 {
+  transform: rotateZ(-40deg);
+}
+
+.navbar-checkbox:checked ~ .hamburger-menu .menu-line-2 {
+  opacity: 0;
+}
+
+.navbar-checkbox:checked ~ .hamburger-menu .menu-line-3 {
+  transform: rotateZ(40deg);
+}
+
 .header {
   width: 100%;
   height: 100vh;
@@ -9,6 +144,11 @@
   .brand {
     @include centeringText(15%);
     @include flexLayout;
+
+    @media (max-width: 480px) {
+      @include centeringText(10%);
+      height: 90vh;
+    }
   }
 
   &-banner {
@@ -28,6 +168,10 @@
     width: 40%;
     left: -150px;
 
+    @media (max-width: 768px) {
+      display: none;
+    }
+
     img {
       width: 100%;
     }
@@ -41,12 +185,27 @@
     flex-direction: column;
     align-items: center;
 
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
     .stars {
       color: $color-primary;
       margin: 20px 0;
 
+      @media (max-width: 768px) {
+        margin: 15px 0;
+      }
+      @media (max-width: 480px) {
+        margin: 10px 0;
+      }
+
       .star {
         margin-right: 10px;
+
+        @media (max-width: 480px) {
+          margin-right: 8px;
+        }
       }
     }
 
@@ -54,6 +213,40 @@
       text-align: justify;
       color: $color-secondary;
       font-family: $font-josefinSans;
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+      @media (max-width: 480px) {
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+.gallery {
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.footer {
+  @include flexLayout;
+  flex-direction: column;
+  margin: 40px 0;
+
+  &-brand {
+    @include flexLayout;
+  }
+
+  &-copyright-text {
+    font-family: $font-josefinSans;
+    font-size: 15px;
+    color: $color-secondary;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
     }
   }
 }
